@@ -9,6 +9,12 @@ const TaskItems = ()=>{
         newTaskItem[index].done=!newTaskItem[index].done;
         setTitle(newTaskItem)
     }
+    const handledelete=(id)=>{alert(id)
+        var newIndex=title.filter(t=>t.id !== id)
+        alert(newIndex)
+        setTitle(newIndex);
+    }
+    if(title.length){
     return (
         <ul className="list-group m-0 p-0 mt-2">
         {title.map(t=>(
@@ -20,12 +26,15 @@ const TaskItems = ()=>{
                     ):(
                         <i className="me-3 pointer fas fa-times text-warning transition_200 text_hover_shadow" onClick={()=>handleChange(t.id)}></i>
                     )}
-                    <i className="me-3 pointer fas fa-trash text-danger transition_200 text_hover_shadow"></i>
+                    <i className="me-3 pointer fas fa-trash text-danger transition_200 text_hover_shadow" onClick={()=>handledelete(t.id)}></i>
                 </span>
             </li>
             ))}
         </ul>    
     )
+}else{
+    <h2>چیزی وجود ندارد</h2>
+}
 }
 
 export default TaskItems;
